@@ -1,0 +1,4 @@
+com\example\project\sa2\springboot\service\ProducerService.class
+com\example\project\sa2\springboot\model\Offer.class
+com\example\project\sa2\springboot\ProducerApplication.class
+com\example\project\sa2\springboot\controller\ProducerController.class

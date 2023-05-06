@@ -1,0 +1,56 @@
+# (*To dockerization this app*)
+#<---------------------------->
+# base image
+FROM openjdk   
+
+# Create app directory
+# Copy all folders in this project to docker fiels
+COPY . .
+
+# define network port
+/----------------------------------------------------------->
+To build customer and marketer Images .
+docker image build -t customerimage .
+docker image build -t producerimage .
+------------------------>
+To Run Containers .
+
+docker run --network ecommerce-net --name customer0 -d -p 8081:8081 customerimage
+docker run --network ecommerce-net --name marketer1 -d -p 8081:8081 producerimage
+docker run -- name ecommorcedb  --network ecommerce-net -e MSQL_ROOT_PASSWORD=12345 -d -p 3306: 3306 mysql:5.7
+
+---------------------------------------------------------------->
+To Run Database .
+docker exec -it 773 bash
+mysql  -uroot -p12345
+create database offersDb ;
+------------------------------------->
+CRUD From Database;
+use  offersDb;
+select * from offers;
+INSERT INTO offers (description , product ) VALUES ('good phone' ,' phone');
+DELETE FROM offers where id=3;
+UPDATE offers SET product="Watch" where id=1;
+
+------------------------------------------>
+
+Postman Urls.
+
+http://localhost:8080/ecommerceSystem/addOffer----------------->post
+http://localhost:8081/ecommerceSystem/list----------------->get
+ http://localhost:8081/ecommerceSystem/offer/3------------------>get id 
+http://localhost:8080/ecommerceSystem/deleteOffer---------------->Delete
+http://localhost:8080/ecommerceSystem/updateOffer--------->updata
+
+
+
+
+----------------------------------------------------------------->
+<<Contant>>
+    {
+    
+    "description":"molto is nice",
+    "product":"molto ",
+    "operationType":"sweet"
+    
+}
